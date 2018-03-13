@@ -1,21 +1,39 @@
 <div [formGroup]="form">
-  <label [attr.for]="question.key">{{question.label}}</label>
+  <label [attr.for]="question.key" class="h3">{{question.label}}</label>
 
   <div [ngSwitch]="question.controlType">
 
     <!-- ############## !-->
     <!-- TEXTBOX INPUTS !-->
-    <input *ngSwitchCase="'textbox'" [formControlName]="question.key"
-            [id]="question.key" [type]="question.type">
+    <input *ngSwitchCase="'textbox'"
+    [formControlName]="question.key"
+    [id]="question.key" [type]="question.type">
 
     <!-- ############### !-->
     <!-- DROPDOWN INPUTS !-->
-    <select [id]="question.key" *ngSwitchCase="'dropdown'" [formControlName]="question.key">
+    <select [id]="question.key"
+    *ngSwitchCase="'dropdown'"
+    [formControlName]="question.key">
       <option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</option>
     </select>
 
+    <!-- ############### !-->
+    <!-- CHECKBOX INPUTS !-->
+    <label *ngSwitchCase="'checkbox'">
+      <input
+      (change)="question.value = $event.target.checked"
+      [id]="question.key"
+      [type]="question.type"
+      [(ngModel)]="question.value"
+      [attr.checked]="question.value ? true : null"
+      [formControlName]="question.key">
+        {{question.label}}
+    </label>
+
+
     <!-- ################## !-->
     <!-- RADIOBUTTON INPUTS !-->
+    <!-- @FIXME: implement me !-->
     <fieldset *ngSwitchCase="'radio'" [formControlName]="question.key">
       <span *ngFor="let opt of question.options">
           <input [value]="opt.key">

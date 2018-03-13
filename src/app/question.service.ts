@@ -1,8 +1,16 @@
 import { Injectable }       from '@angular/core';
 
-import { DropdownQuestion } from './question-dropdown';
 import { QuestionBase }     from './question-base';
+import { DropdownQuestion } from './question-dropdown';
 import { TextboxQuestion }  from './question-textbox';
+import { CheckboxQuestion } from './question-checkbox';
+
+/** 
+ * question service holds mock data now
+ * @TODO: make asynchronous; get data from remote server
+ * 
+ * The content of the dynamic form is entirely dependant on what this service returns 
+*/
 
 @Injectable()
 export class QuestionService {
@@ -46,9 +54,16 @@ export class QuestionService {
         options: [
             {key: 'ger', value: 'Germany'},
             {key: 'us', value: 'United States of America'},
-            {key: 'pg', value: 'Paraguay'},
+            {key: 'hn', value: 'Honduras'},
         ],
         order: 4
+      }),
+
+      new CheckboxQuestion({
+        key: 'life-married',
+        label: 'Married Label',
+        type: 'checkbox',
+        order: 5
       })
     ];
 

@@ -1,18 +1,31 @@
-<div>
+<div class="container">
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
 
-    <div *ngFor="let question of questions" class="form-row">
-      <app-question [question]="question" [form]="form"></app-question>
+    <div *ngFor="let question of questions" class="row form-row">
+      <div class="col-sm-12">
+        <app-question [question]="question" [form]="form"></app-question>
+      </div>      
     </div>
 
+    <br />
 
     <!-- end of form !-->
-    <div class="form-row">
-      <button type="submit" [disabled]="!form.valid">Save</button>
+    <div class="row form-row">
+      <div class="col-sm-12">
+        <button
+          type="submit"
+          [disabled]="!form.valid"
+          class="btn btn-nm btn-primary">
+          Save
+        </button>
+      </div>
     </div>
   </form>
 
   <div *ngIf="payLoad" class="form-row">
-    <strong>Saved the following values</strong><br>{{payLoad}}
+    <strong>
+      Saved the following values
+    </strong>
+    <br />{{payLoad}}
   </div>
 </div>

@@ -5,7 +5,7 @@ import { QuestionBase }              from './question-base';
 import { QuestionControlService }    from './question-control.service';
 
 /** dynamic form component
- * presents a list of questions, each boudn to a <app-question> component element.
+ * presents a list of questions, each bound to a <app-question> component element.
  * The <app-question> tag matches the DynamicFromQuestionComponent, the component responsible for rendering the details
  * of each individual question based on values in the data-bound question object
  */
